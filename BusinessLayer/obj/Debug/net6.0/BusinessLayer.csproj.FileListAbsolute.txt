@@ -1,0 +1,15 @@
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\bin\Debug\net6.0\BusinessLayer.deps.json
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\bin\Debug\net6.0\BusinessLayer.dll
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\bin\Debug\net6.0\BusinessLayer.pdb
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\bin\Debug\net6.0\ModelLayer.dll
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\bin\Debug\net6.0\ModelLayer.pdb
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\BusinessLayer.csproj.AssemblyReference.cache
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\BusinessLayer.AssemblyInfoInputs.cache
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\BusinessLayer.AssemblyInfo.cs
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\BusinessLayer.csproj.CoreCompileInputs.cache
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\Business.EA331CBA.Up2Date
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\BusinessLayer.dll
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\refint\BusinessLayer.dll
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\BusinessLayer.pdb
+D:\Visual Studio Projects\HelloGreetingApplication\BusinessLayer\obj\Debug\net6.0\ref\BusinessLayer.dll
