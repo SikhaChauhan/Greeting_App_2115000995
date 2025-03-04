@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Visual Studio Projects\\HelloGreetingApplication\\BusinessLayer\\BusinessLayer.csproj": {}
+    "D:\\HelloGreetingApp\\Greeting_App_2115000995\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "D:\\Visual Studio Projects\\HelloGreetingApplication\\BusinessLayer\\BusinessLayer.csproj": {
+    "D:\\HelloGreetingApp\\Greeting_App_2115000995\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\HelloGreetingApplication\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "D:\\HelloGreetingApp\\Greeting_App_2115000995\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "D:\\Visual Studio Projects\\HelloGreetingApplication\\BusinessLayer\\BusinessLayer.csproj",
+        "projectPath": "D:\\HelloGreetingApp\\Greeting_App_2115000995\\BusinessLayer\\BusinessLayer.csproj",
         "packagesPath": "C:\\Users\\91843\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\HelloGreetingApplication\\BusinessLayer\\obj\\",
+        "outputPath": "D:\\HelloGreetingApp\\Greeting_App_2115000995\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Visual Studio Projects\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj": {
-                "projectPath": "D:\\Visual Studio Projects\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj"
+              "D:\\HelloGreetingApp\\Greeting_App_2115000995\\ModelLayer\\ModelLayer.csproj": {
+                "projectPath": "D:\\HelloGreetingApp\\Greeting_App_2115000995\\ModelLayer\\ModelLayer.csproj"
               }
             }
           }
@@ -73,14 +73,14 @@
         }
       }
     },
-    "D:\\Visual Studio Projects\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj": {
+    "D:\\HelloGreetingApp\\Greeting_App_2115000995\\ModelLayer\\ModelLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj",
+        "projectUniqueName": "D:\\HelloGreetingApp\\Greeting_App_2115000995\\ModelLayer\\ModelLayer.csproj",
         "projectName": "ModelLayer",
-        "projectPath": "D:\\Visual Studio Projects\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj",
+        "projectPath": "D:\\HelloGreetingApp\\Greeting_App_2115000995\\ModelLayer\\ModelLayer.csproj",
         "packagesPath": "C:\\Users\\91843\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\HelloGreetingApplication\\ModelLayer\\obj\\",
+        "outputPath": "D:\\HelloGreetingApp\\Greeting_App_2115000995\\ModelLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
