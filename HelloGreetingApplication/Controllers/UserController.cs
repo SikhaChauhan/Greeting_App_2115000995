@@ -40,7 +40,7 @@ namespace HelloGreetingApplication.Controllers
             {
                 Email = model.Email,
                 PasswordHash = hashedPassword,
-                Salt = salt
+         
             };
 
             _userBL.RegisterUser(user);
@@ -58,7 +58,8 @@ namespace HelloGreetingApplication.Controllers
                 return Unauthorized("Invalid email or password.");
             }
 
-            var hashedPassword = HashPassword(model.Password, user.Salt);
+            var salt = GenerateSalt();
+            var hashedPassword = HashPassword(model.Password, salt);
             if (user.PasswordHash != hashedPassword)
             {
                 return Unauthorized("Invalid email or password.");
