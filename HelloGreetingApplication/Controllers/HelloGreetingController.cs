@@ -2,6 +2,7 @@ using BusinessLayer.Interface;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
 using RepositoryLayer.Entity;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace HelloGreetingApplication.Controllers
 {
@@ -25,7 +26,7 @@ namespace HelloGreetingApplication.Controllers
         /// </summary>
         /// <returns>Hello, World</returns>
         [HttpGet]
-        public IActionResult Get() 
+        public IActionResult Get()
         {
             ResponseModel<Dictionary<string, string>> ResponseModel = new ResponseModel<Dictionary<string, string>>();
 
@@ -106,7 +107,7 @@ namespace HelloGreetingApplication.Controllers
 
         [HttpGet]
         [Route("greeting")]
-        public IActionResult Greetings([FromQuery] string? firstName, [FromQuery] string? lastName) 
+        public IActionResult Greetings([FromQuery] string? firstName, [FromQuery] string? lastName)
         {
             ResponseModel<string> ResponseModel = new ResponseModel<string>();
 
@@ -149,7 +150,7 @@ namespace HelloGreetingApplication.Controllers
         {
             ResponseModel<List<GreetingEntity>> ResponseModel = new ResponseModel<List<GreetingEntity>>();
 
-           try
+            try
             {
                 ResponseModel.Success = true;
                 ResponseModel.Message = "Greetings fetched successfully";
@@ -185,6 +186,36 @@ namespace HelloGreetingApplication.Controllers
 
             }
 
+            return Ok(ResponseModel);
+        }
+
+        [HttpPut]
+        [Route("update-greeting/{id}")]
+        public IActionResult UpdateGreeting(int id, [FromBody] string NewMessage)
+        {
+            ResponseModel<string> ResponseModel = new ResponseModel<string>();
+            bool isUpdated = _greetingService.UpdateGreeting(id, NewMessage);
+            Console.WriteLine(isUpdated);
+            try
+            {
+                if (!isUpdated)
+                {
+                    ResponseModel.Success = false;
+                    ResponseModel.Message = "Greeting not found";
+                    ResponseModel.Data = null;
+                }
+                else
+                {
+                    ResponseModel.Success = true;
+                    ResponseModel.Message = "Greeting updated successfully";
+                    ResponseModel.Data = $"Greeting with id {id} updated.";
+                }
+            }
+            catch (Exception ex)
+            {
+                ResponseModel.Success = false;
+                ResponseModel.Message = $"Error updating greeting: {ex.Message}";
+            }
             return Ok(ResponseModel);
         }
     }
