@@ -1,5 +1,4 @@
-﻿using System.Text;
-using BusinessLayer.Interface;
+﻿using BusinessLayer.Interface;
 using BusinessLayer.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +7,8 @@ using NLog;
 using NLog.Web;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
+using System.Text;
+
 //Implementing NLogger
 var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
 
@@ -45,8 +46,8 @@ builder.Services.AddScoped<IGreetingRL, GreetingRL>();
 builder.Services.AddScoped<IUserBL, UserBL>();
 builder.Services.AddScoped<IUserRL, UserRL>();
 
-var app = builder.Build();
-var key = Encoding.ASCII.GetBytes("YourSecretKeyHereAndIllWillUseThisKeyForJWT");
+// Configure JWT Authentication
+var key = Encoding.ASCII.GetBytes("YourSecretKeyHere"); // Replace with your secret key
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -68,8 +69,9 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+var app = builder.Build();
 
-//Custom exception handling middlewaress
+//Custom exception handling middleware
 app.UseMiddleware<BusinessLayer.ExceptionMiddleware>();
 
 app.UseSwagger();
@@ -77,6 +79,7 @@ app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
