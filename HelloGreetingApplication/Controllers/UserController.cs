@@ -62,7 +62,7 @@ namespace HelloGreetingApplication.Controllers
             return Ok("Login successful.");
         }
 
-        // Placeholder for forget password and reset password APIs
+        // Placeholder for forget password and reset password APIs are done here
         [HttpPost]
         [Route("forget-password")]
         public IActionResult ForgetPassword([FromBody] ForgetPasswordModel model)
@@ -76,7 +76,7 @@ namespace HelloGreetingApplication.Controllers
         public IActionResult ResetPassword([FromBody] ResetPasswordModel model)
         {
 
-            return Ok("Reset password logic not implemented.");
+            return Ok("Reset password logic not implemented.!");
         }
 
         private string GenerateSalt()
