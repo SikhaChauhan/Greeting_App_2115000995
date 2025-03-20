@@ -1,5 +1,7 @@
+using BusinessLayer.Interface;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
+using RepositoryLayer.Entity;
 
 namespace HelloGreetingApplication.Controllers
 {
@@ -11,6 +13,12 @@ namespace HelloGreetingApplication.Controllers
     public class HelloGreetingController : ControllerBase
     {
         private static Dictionary<string, string> greetings = new Dictionary<string, string>();
+        private readonly IGreetingService _greetingService;
+
+        public HelloGreetingController(IGreetingService greetingService)
+        {
+            _greetingService = greetingService;
+        }
 
         /// <summary>
         /// Get Method to get the Greeting Message
@@ -29,7 +37,7 @@ namespace HelloGreetingApplication.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(RequestModel requestModel)
+        public IActionResult Post([FromBody] RequestModel requestModel)
         {
             ResponseModel<string> ResponseModel = new ResponseModel<string>();
 
@@ -92,6 +100,66 @@ namespace HelloGreetingApplication.Controllers
             greetings.Remove(key);
             ResponseModel.Success = true;
             ResponseModel.Message = "Entry deleted successfully";
+
+            return Ok(ResponseModel);
+        }
+
+        [HttpGet]
+        [Route("greeting")]
+        public IActionResult Greetings([FromQuery] string? firstName, [FromQuery] string? lastName)
+        {
+            ResponseModel<string> ResponseModel = new ResponseModel<string>();
+
+            ResponseModel.Success = true;
+            ResponseModel.Message = "Greeting message fetched successfully";
+            ResponseModel.Data = _greetingService.GetGreetingMessage(firstName, lastName);
+
+            return Ok(ResponseModel);
+        }
+
+        /// <summary>
+        /// Save Greeting Message
+        /// </summary>
+        [HttpPost]
+        [Route("save-greeting")]
+        public IActionResult SaveGreeting([FromBody] GreetingEntity greeting)
+        {
+            ResponseModel<string> ResponseModel = new ResponseModel<string>();
+
+            try
+            {
+                _greetingService.SaveGreetingMessage(greeting);
+                ResponseModel.Success = true;
+                ResponseModel.Message = "Greeting saved successfully";
+                ResponseModel.Data = $"Greeting for {greeting.FirstName} {greeting.LastName} saved.";
+            }
+            catch (Exception ex)
+            {
+                ResponseModel.Success = false;
+                ResponseModel.Message = $"Error saving greeting: {ex.Message}";
+            }
+
+            return Ok(ResponseModel);
+        }
+
+
+        [HttpGet]
+        [Route("get-greetings")]
+        public IActionResult GetGreetings()
+        {
+            ResponseModel<List<GreetingEntity>> ResponseModel = new ResponseModel<List<GreetingEntity>>();
+
+            try
+            {
+                ResponseModel.Success = true;
+                ResponseModel.Message = "Greetings fetched successfully";
+                ResponseModel.Data = _greetingService.GetSavedGreetings();
+            }
+            catch (Exception ex)
+            {
+                ResponseModel.Success = false;
+                ResponseModel.Message = $"Error fetching greetings: {ex.Message}";
+            }
 
             return Ok(ResponseModel);
         }
