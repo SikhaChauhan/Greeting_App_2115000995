@@ -163,5 +163,29 @@ namespace HelloGreetingApplication.Controllers
 
             return Ok(ResponseModel);
         }
+
+        [HttpGet]
+        [Route("getGreetingById/{id}")]
+        public IActionResult GetGreetingById(int id)
+        {
+            ResponseModel<List<GreetingEntity>> ResponseModel = new ResponseModel<List<GreetingEntity>>();
+            var greeting = _greetingService.GetGreetingById(id);
+
+            if (greeting == null)
+            {
+                ResponseModel.Success = false;
+                ResponseModel.Message = "Greeting not found";
+                ResponseModel.Data = null;
+            }
+            else
+            {
+                ResponseModel.Success = true;
+                ResponseModel.Message = "Greeting found";
+                ResponseModel.Data = new List<GreetingEntity> { greeting };
+
+            }
+
+            return Ok(ResponseModel);
+        }
     }
 }
