@@ -61,6 +61,10 @@
             "NLog.Extensions.Logging": {
               "target": "Package",
               "version": "[5.4.0, )"
+            },
+            "TokenGenerator.Jwt": {
+              "target": "Package",
+              "version": "[1.0.2, )"
             }
           },
           "imports": [
@@ -245,6 +249,10 @@
             "NLog.Extensions.Logging": {
               "target": "Package",
               "version": "[5.4.0, )"
+            },
+            "TokenGenerator.Jwt": {
+              "target": "Package",
+              "version": "[1.0.2, )"
             }
           },
           "imports": [

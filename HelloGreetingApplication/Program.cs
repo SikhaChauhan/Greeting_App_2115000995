@@ -1,6 +1,9 @@
-﻿using BusinessLayer.Interface;
+﻿using System.Text;
+using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NLog;
 using NLog.Web;
 using RepositoryLayer.Interface;
@@ -43,6 +46,28 @@ builder.Services.AddScoped<IUserBL, UserBL>();
 builder.Services.AddScoped<IUserRL, UserRL>();
 
 var app = builder.Build();
+var key = Encoding.ASCII.GetBytes("YourSecretKeyHereAndIllWillUseThisKeyForJWT");
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "YourIssuer",
+        ValidAudience = "YourAudience",
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
+
 
 //Custom exception handling middlewaress
 app.UseMiddleware<BusinessLayer.ExceptionMiddleware>();
