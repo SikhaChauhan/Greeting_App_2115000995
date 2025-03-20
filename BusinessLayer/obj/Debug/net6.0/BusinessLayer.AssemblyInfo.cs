@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BusinessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c26808b4eb625a61c08d93e165d5e36c9b0dfdd")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84aba8277723530f4d0e3d321cdbd7ca451eb2d1")]
->>>>>>> UC2
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b8c4ac0038a4bb22115198357c9e4c4a2463166")]
 [assembly: System.Reflection.AssemblyProductAttribute("BusinessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BusinessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

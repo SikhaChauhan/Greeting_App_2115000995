@@ -9,3 +9,18 @@ D:\Visual Studio Projects\HelloGreetingApplication\ModelLayer\obj\Debug\net6.0\M
 D:\Visual Studio Projects\HelloGreetingApplication\ModelLayer\obj\Debug\net6.0\refint\ModelLayer.dll
 D:\Visual Studio Projects\HelloGreetingApplication\ModelLayer\obj\Debug\net6.0\ModelLayer.pdb
 D:\Visual Studio Projects\HelloGreetingApplication\ModelLayer\obj\Debug\net6.0\ref\ModelLayer.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\bin\Debug\net6.0\ModelLayer.deps.json
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\bin\Debug\net6.0\ModelLayer.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\bin\Debug\net6.0\ModelLayer.pdb
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfoInputs.cache
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfo.cs
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ModelLayer.csproj.CoreCompileInputs.cache
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ModelLayer.sourcelink.json
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ModelLayer.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\refint\ModelLayer.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ModelLayer.pdb
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ref\ModelLayer.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\bin\Debug\net6.0\ModelLayer.runtimeconfig.json
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ModelLayer.csproj.AssemblyReference.cache
+D:\HelloGreetingApp\Greeting_App_2115000995\ModelLayer\obj\Debug\net6.0\ModelLayer.genruntimeconfig.cache
