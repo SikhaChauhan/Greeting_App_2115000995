@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Service
+namespace ModelLayer.Model
 {
-    public class GreetingBL
+    public class ForgetPasswordModel
     {
+        public string Email { get; set; }
     }
 }
