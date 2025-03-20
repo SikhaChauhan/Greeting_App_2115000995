@@ -924,6 +924,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "NLog.Extensions.Logging": "5.4.0",
           "RepositoryLayer": "1.0.0"
         },
         "compile": {
@@ -937,7 +938,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.36"
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.36",
+          "NLog.Extensions.Logging": "5.4.0"
         },
         "compile": {
           "bin/placeholder/ModelLayer.dll": {}
@@ -952,7 +954,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.36",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.36",
-          "ModelLayer": "1.0.0"
+          "ModelLayer": "1.0.0",
+          "NLog.Extensions.Logging": "5.4.0"
         },
         "compile": {
           "bin/placeholder/RepositoryLayer.dll": {}
@@ -2640,6 +2643,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 6.0.36",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.36",
       "NLog >= 5.4.0",
+      "NLog.Extensions.Logging >= 5.4.0",
       "NLog.Web >= 5.4.0",
       "NLog.Web.AspNetCore >= 5.4.0",
       "Swashbuckle.AspNetCore >= 7.3.1",
@@ -2713,6 +2717,10 @@
             "version": "[6.0.36, )"
           },
           "NLog": {
+            "target": "Package",
+            "version": "[5.4.0, )"
+          },
+          "NLog.Extensions.Logging": {
             "target": "Package",
             "version": "[5.4.0, )"
           },

@@ -12,6 +12,7 @@
           "Microsoft.EntityFrameworkCore.Design": "6.0.36",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.36",
           "NLog": "5.4.0",
+          "NLog.Extensions.Logging": "5.4.0",
           "NLog.Web": "5.4.0",
           "NLog.Web.AspNetCore": "5.4.0",
           "Swashbuckle.AspNetCore": "7.3.1",
@@ -585,6 +586,7 @@
       },
       "BusinessLayer/1.0.0": {
         "dependencies": {
+          "NLog.Extensions.Logging": "5.4.0",
           "RepositoryLayer": "1.0.0"
         },
         "runtime": {
@@ -596,7 +598,8 @@
       },
       "ModelLayer/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.36"
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.36",
+          "NLog.Extensions.Logging": "5.4.0"
         },
         "runtime": {
           "ModelLayer.dll": {
@@ -609,7 +612,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.36",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.36",
-          "ModelLayer": "1.0.0"
+          "ModelLayer": "1.0.0",
+          "NLog.Extensions.Logging": "5.4.0"
         },
         "runtime": {
           "RepositoryLayer.dll": {
