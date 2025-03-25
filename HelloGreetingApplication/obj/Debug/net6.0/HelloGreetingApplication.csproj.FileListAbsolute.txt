@@ -135,3 +135,10 @@ D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\n
 D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\ExceptionMiddleware.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\RabbitMQ.Client.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\StackExchange.Redis.dll
+D:\HelloGreetingApp\Greeting_App_2115000995\HelloGreetingApplication\bin\Debug\net6.0\TokenGenerator.dll

@@ -1,5 +1,7 @@
+using System.Security.Claims;
 using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ModelLayer.Model;
 using RepositoryLayer.Entity;
@@ -33,7 +35,7 @@ namespace HelloGreetingApplication.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            ResponseModel<Dictionary<string, string>> ResponseModel = new ResponseModel<Dictionary<string, string>>();
+            ResponseBody<Dictionary<string, string>> ResponseModel = new ResponseBody<Dictionary<string, string>>();
 
             ResponseModel.Success = true;
             ResponseModel.Message = "Hello to Greeting App API Endpoint";
@@ -42,79 +44,11 @@ namespace HelloGreetingApplication.Controllers
             return Ok(ResponseModel);
         }
 
-        [HttpPost]
-        public IActionResult Post([FromBody] RequestModel requestModel)
-        {
-            ResponseModel<string> ResponseModel = new ResponseModel<string>();
-
-            greetings[requestModel.Key] = requestModel.Value;
-
-            ResponseModel.Success = true;
-            ResponseModel.Message = "Request received successfully";
-            ResponseModel.Data = $"Key: {requestModel.Key}, Value: {requestModel.Value}";
-
-            return Ok(ResponseModel);
-        }
-
-        [HttpPut]
-        public IActionResult Put([FromBody] RequestModel requestModel)
-        {
-            ResponseModel<Dictionary<string, string>> ResponseModel = new ResponseModel<Dictionary<string, string>>();
-
-            // Add or update the dictionary
-            greetings[requestModel.Key] = requestModel.Value;
-
-            ResponseModel.Success = true;
-            ResponseModel.Message = "Greeting updated successfully";
-            ResponseModel.Data = greetings;
-
-            return Ok(ResponseModel);
-        }
-
-        [HttpPatch]
-        public IActionResult Patch(RequestModel requestModel)
-        {
-            ResponseModel<string> ResponseModel = new ResponseModel<string>();
-
-            if (!greetings.ContainsKey(requestModel.Key))
-            {
-                ResponseModel.Success = false;
-                ResponseModel.Message = "Key not found";
-                return NotFound(ResponseModel);
-            }
-
-            greetings[requestModel.Key] = requestModel.Value;
-            ResponseModel.Success = true;
-            ResponseModel.Message = "Value partially updated successfully";
-            ResponseModel.Data = $"Key: {requestModel.Key}, Updated Value: {requestModel.Value}";
-
-            return Ok(ResponseModel);
-        }
-
-        [HttpDelete("{key}")]
-        public IActionResult Delete(string key)
-        {
-            ResponseModel<string> ResponseModel = new ResponseModel<string>();
-
-            if (!greetings.ContainsKey(key))
-            {
-                ResponseModel.Success = false;
-                ResponseModel.Message = "Key not found";
-                return NotFound(ResponseModel);
-            }
-
-            greetings.Remove(key);
-            ResponseModel.Success = true;
-            ResponseModel.Message = "Entry deleted successfully";
-
-            return Ok(ResponseModel);
-        }
-
         [HttpGet]
         [Route("greeting")]
         public IActionResult Greetings([FromQuery] string? firstName, [FromQuery] string? lastName)
         {
-            ResponseModel<string> ResponseModel = new ResponseModel<string>();
+            ResponseBody<string> ResponseModel = new ResponseBody<string>();
 
             ResponseModel.Success = true;
             ResponseModel.Message = "Greeting message fetched successfully";
@@ -123,18 +57,66 @@ namespace HelloGreetingApplication.Controllers
             return Ok(ResponseModel);
         }
 
+        private int GetUserIdFromToken()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            if (identity != null && identity.IsAuthenticated)
+            {
+                Console.WriteLine("TOKEN CLAIMS: ");
+                foreach (var claim in identity.Claims)
+                {
+                    Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+                }
+
+                var userIdClaim = identity.Claims
+                    .Where(c => c.Type == ClaimTypes.NameIdentifier)
+                    .LastOrDefault();
+                if (userIdClaim != null)
+                {
+                    return int.Parse(userIdClaim.Value);
+                }
+            }
+            throw new UnauthorizedAccessException("User ID not found in token.");
+        }
+
+
+
         /// <summary>
         /// Save Greeting Message
         /// </summary>
+        [Authorize]
         [HttpPost]
         [Route("save-greeting")]
-        public IActionResult SaveGreeting([FromBody] GreetingEntity greeting, [FromQuery] int userId)
+        public IActionResult SaveGreeting([FromBody] GreetingRequestDTO request)
         {
-            ResponseModel<string> responseModel = new ResponseModel<string>();
+            ResponseBody<string> responseModel = new ResponseBody<string>();
 
             try
             {
+                var userId = GetUserIdFromToken();
+
+                //Debugging log
+                Console.WriteLine($"Received Request: {request.FirstName}, {request.LastName}, {request.Message}");
+
+                if (string.IsNullOrWhiteSpace(request.FirstName) ||
+                    string.IsNullOrWhiteSpace(request.LastName) ||
+                    string.IsNullOrWhiteSpace(request.Message))
+                {
+                    responseModel.Success = false;
+                    responseModel.Message = "First name, last name, and message are required.";
+                    return BadRequest(responseModel);
+                }
+
+                GreetingEntity greeting = new GreetingEntity()
+                {
+                    FirstName = request.FirstName,
+                    LastName = request.LastName,
+                    Message = request.Message,
+                    UserId = userId
+                };
+
                 _greetingService.SaveGreetingMessage(greeting, userId);
+
                 responseModel.Success = true;
                 responseModel.Message = "Greeting saved successfully";
                 responseModel.Data = $"Greeting for {greeting.FirstName} {greeting.LastName} saved.";
@@ -149,11 +131,12 @@ namespace HelloGreetingApplication.Controllers
         }
 
 
+
         [HttpGet]
         [Route("get-greetings")]
         public IActionResult GetGreetings()
         {
-            ResponseModel<List<GreetingEntity>> ResponseModel = new ResponseModel<List<GreetingEntity>>();
+            ResponseBody<List<GreetingEntity>> ResponseModel = new ResponseBody<List<GreetingEntity>>();
 
             try
             {
@@ -174,7 +157,7 @@ namespace HelloGreetingApplication.Controllers
         [Route("getGreetingById/{id}")]
         public IActionResult GetGreetingById(int id)
         {
-            ResponseModel<List<GreetingEntity>> ResponseModel = new ResponseModel<List<GreetingEntity>>();
+            ResponseBody<List<GreetingEntity>> ResponseModel = new ResponseBody<List<GreetingEntity>>();
             var greeting = _greetingService.GetGreetingById(id);
 
             if (greeting == null)
@@ -198,7 +181,7 @@ namespace HelloGreetingApplication.Controllers
         [Route("update-greeting/{id}")]
         public IActionResult UpdateGreeting(int id, [FromBody] string NewMessage)
         {
-            ResponseModel<string> ResponseModel = new ResponseModel<string>();
+            ResponseBody<string> ResponseModel = new ResponseBody<string>();
             bool isUpdated = _greetingService.UpdateGreeting(id, NewMessage);
             Console.WriteLine(isUpdated);
             try
@@ -228,7 +211,7 @@ namespace HelloGreetingApplication.Controllers
         [Route("delete-greeting/{id}")]
         public IActionResult DeleteGreeting(int id)
         {
-            ResponseModel<string> ResponseModel = new ResponseModel<string>();
+            ResponseBody<string> ResponseModel = new ResponseBody<string>();
             bool isDeleted = _greetingService.DeleteGreeting(id);
 
             if (!isDeleted)
@@ -259,14 +242,14 @@ namespace HelloGreetingApplication.Controllers
         }
 
         [HttpPost("cache")]
-        public async Task<IActionResult> SetCache([FromBody] RequestModel request)
+        public async Task<IActionResult> SetCache([FromBody] RequestBody request)
         {
             await _redisCacheService.SetAsync(request.Key, request.Value);
             return Ok();
         }
 
         [HttpPost("publish")]
-        public IActionResult PublishMessage([FromBody] RequestModel request)
+        public IActionResult PublishMessage([FromBody] RequestBody request)
         {
             _rabbitMQService.Publish("greetingQueue", request.Value);
             return Ok();

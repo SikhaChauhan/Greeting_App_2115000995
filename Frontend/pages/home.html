@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home - Greeting App</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>My Greetings</h2>
+        <button id="logoutBtn">Logout</button>
+        <div id="greetingsContainer">
+            <!-- Greeting messages will be added here -->
+        </div>
+
+        <h3>Add New Greeting</h3>
+        <form id="addGreetingForm">
+            <div class="form-group">
+                <label for="greetingFirstName">First Name:</label>
+                <input type="text" id="greetingFirstName" required />
+            </div>
+            <div class="form-group">
+                <label for="greetingLastName">Last Name:</label>
+                <input type="text" id="greetingLastName" required />
+            </div>
+            <div class="form-group">
+                <label for="greetingMessage">Message:</label>
+                <textarea id="greetingMessage" required></textarea>
+            </div>
+            <button type="submit">Add Greeting</button>
+        </form>
+        <div id="homeError" class="error"></div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

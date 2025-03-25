@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using RepositoryLayer.Entity;
 
-namespace RepositoryLayer.Service
+namespace RepositoryLayer.Entity
 {
     public class GreetingDBContext : DbContext
     {
@@ -16,12 +15,12 @@ namespace RepositoryLayer.Service
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<GreetingEntity>()
                 .HasOne(g => g.User)
                 .WithMany(u => u.Greetings)
                 .HasForeignKey(g => g.UserId);
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }
